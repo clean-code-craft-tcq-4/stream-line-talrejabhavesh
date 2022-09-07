@@ -10,7 +10,7 @@ public class SenderTest{
  @Test 
  public static void testConvertRanges12bit() {
     List<Integer> bitReadings= Arrays.asList(409,820,1228);
-    System.out.println(Sender.convert12BitToAmps(bitReadings).equals(Arrays.asList(1,2,3)));
+    assertTrue(Sender.convert12BitToAmps(bitReadings).equals(Arrays.asList(1,2,3)));
 
   }
 
