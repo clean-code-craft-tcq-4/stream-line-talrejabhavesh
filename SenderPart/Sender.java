@@ -51,15 +51,35 @@ public class Sender{
   }
   
   
+  public static List<Integer> generateCurrentReadings(int noOfReadings) {
+    List<Integer> bitReadings = new ArrayList<>();
+    int firstReading=50;
+    for(int i=0;i<noOfReadings;i++) {
+      bitReadings.add(firstReading);
+      firstReading+=100;
+    }
+    return bitReadings;
+  }
+  
+  public static List<Integer> generateTemperatureReadings(int noOfReadings) {
+    List<Integer> farenheitReadings = new ArrayList<>();
+    int firstReading=32;
+    for(int i=0;i<noOfReadings;i++) {
+      farenheitReadings.add(firstReading);
+      firstReading+=5;
+    }
+    return farenheitReadings;
+  }
+  
   public static void main(String[] args) {
     
-    List<Integer> bitReadings= Arrays.asList(409,820,1228);
+    List<Integer> bitReadings=generateCurrentReadings(50);
     List<Integer> ampereReadings=convert12BitToAmps(bitReadings);
     
-    List<Integer> celciusReadings= Arrays.asList(113,86,77);
-    List<Integer> temperatureReadings=convertFarenheitToCelcius(celciusReadings);
+    List<Integer> farenheitReadings= generateTemperatureReadings(50);
+    List<Integer> temperatureReadings=convertFarenheitToCelcius(farenheitReadings);
     
-    Map<Integer,List<Integer>> finalReadings=createSingleReadingsMap(ampereReadings,temperatureReadings,3);
+    Map<Integer,List<Integer>> finalReadings=createSingleReadingsMap(ampereReadings,temperatureReadings,50);
     
     printReadingToConsole(finalReadings);
     
