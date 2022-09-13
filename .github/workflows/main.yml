@@ -5,6 +5,10 @@ on: [push, pull_request]
 jobs:
   build:
 
+strategy:
+      matrix:
+        configuration: [Debug]
+        
     runs-on: ubuntu-latest
 
     steps:
@@ -15,3 +19,15 @@ jobs:
         java-version: 1.8
     - name: Normal Run
       run: javac SenderPart/Sender.java
+      
+    # Install the .NET Core workload
+    - name: Install .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.101
+
+    - name: Run tests and collect coverage
+      run: dotnet test --collect:"XPlat Code Coverage"
+      
+    - run: |
+          #bash echo "$PWD"
