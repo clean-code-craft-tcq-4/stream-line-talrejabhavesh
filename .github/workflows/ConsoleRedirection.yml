@@ -32,9 +32,10 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.101
-
-    - name: Run Receiver
-      run: dotnet run -p Receiver/Receiver
+    - name: Install dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build Receiver/Receiver
       
     - name: Run cmd
       run: java SenderPart/Sender.java | Receiver/Receiver/bin/Debug/netcoreapp3.1/Receiver.exe
