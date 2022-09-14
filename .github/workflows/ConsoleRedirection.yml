@@ -36,6 +36,6 @@ jobs:
       run: dotnet build Receiver/Receiver --configuration Debug
       
     - name: Run cmd
-      run: java SenderPart/Sender.java | D:\a\stream-line-talrejabhavesh\stream-line-talrejabhavesh\Receiver\Receiver\bin\Debug\netcoreapp3.1\Receiver.exe
+      run: java D:\a\stream-line-talrejabhavesh\stream-line-talrejabhavesh\SenderPart\Sender.java | D:\a\stream-line-talrejabhavesh\stream-line-talrejabhavesh\Receiver\Receiver\bin\Debug\netcoreapp3.1\Receiver.exe
       shell: cmd
 
