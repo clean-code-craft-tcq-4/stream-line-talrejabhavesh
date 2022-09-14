@@ -36,7 +36,7 @@ jobs:
     - name: Run Receiver
       run: dotnet run -p Receiver/Receiver
       
-    - task: CmdLine@2
-      inputs:
-        script: 'SenderPart/Sender.java | Receiver/Receiver/bin/Debug/netcoreapp3.1/Receiver.exe'
+    - name: Run cmd
+      run: java SenderPart/Sender.java | Receiver/Receiver/bin/Debug/netcoreapp3.1/Receiver.exe
+      shell: cmd
 
