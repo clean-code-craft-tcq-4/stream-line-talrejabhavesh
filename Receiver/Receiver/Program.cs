@@ -9,11 +9,20 @@ namespace Receiver
         {
             List<string> CaptureListOfInputfromSender = new List<string>();
 
-            for (int i = 0; i < 50; i++)
-                CaptureListOfInputfromSender.Add(Console.ReadLine());
+            try
+            {
+                for (int IterateConsoleReadings = 0; IterateConsoleReadings < 50; IterateConsoleReadings++)
+                {
+                    CaptureListOfInputfromSender.Add(Convert.ToString(Console.ReadLine()));
+                }
 
-            List<BmsContainer> containers = SenderStatistics.ComputeBmsStatistics(CaptureListOfInputfromSender);
-            Utilites.PrintStatisticsValue(containers);
+                List<BmsContainer> BmsParameterContainer = SenderStatistics.ComputeBmsStatistics(CaptureListOfInputfromSender);
+                Utilites.PrintStatisticsValue(BmsParameterContainer);
+            }
+            catch (NullReferenceException)
+            {
+                throw new Exception("Data passed from Sender is Invalid!");
+            }
         }
     }
 }
